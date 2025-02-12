@@ -1,11 +1,24 @@
 package com.example.allramarket.domain.customer.controller;
 
+import com.example.allramarket.domain.customer.dto.CustomerDto;
+import com.example.allramarket.domain.customer.entity.Customer;
+import com.example.allramarket.domain.customer.service.CustomerService;
+import com.example.allramarket.global.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/customer")
 public class CustomerController {
 
+    private final CustomerService customerService;
 
+    //회원가입
+    @PostMapping("/register")
+    public CommonResponse customerRegister(@RequestBody CustomerDto customerDto) {
+        Customer customer = customerService.register(customerDto);
+
+        return CommonResponse.success(customer);
+    }
 }

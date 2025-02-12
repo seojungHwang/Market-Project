@@ -17,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/list")
-    public CommonResponse recipeSave() {
+    public CommonResponse productList() {
        List<ProductDto> productList = productService.productList();
 
         return CommonResponse.success(productList);
