@@ -33,7 +33,7 @@ public class OrderItem {
     private Order order;
 
     @Column(nullable = false)
-    private int amount;
+    private Long amount;
 
     @Column(nullable = false)
     private int count;
