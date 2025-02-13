@@ -19,7 +19,6 @@ public class ProductService{
 
 
     //상품 조회
-    //데이터 많을 시...?
     public List<ProductDto> productList(){
        List<Product> productList = productRepository.findAll();
        List<ProductDto> productDto = productList.stream().map(map -> new ProductDto(map)).collect(Collectors.toList());

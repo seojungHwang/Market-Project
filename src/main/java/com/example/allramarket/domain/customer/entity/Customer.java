@@ -26,12 +26,10 @@ public class Customer {
     @Column(length = 50, unique = true, nullable = false)
     private String name;
 
-  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime created_at;
 
-  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updated_at;
