@@ -26,4 +26,7 @@ public class ProductService{
        return productDto;
     }
 
+    public void product(){
+
+    }
 }

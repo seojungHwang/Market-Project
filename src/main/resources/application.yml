@@ -19,3 +19,18 @@ logging:
     org.hibernate:
       type.descriptor.sql: trace #show parameter binding
       SQL: DEBUG
+
+springdoc:
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: method # alpha(??? ????), method(HTTP????)
+    tags-sorter: alpha # ?? ?? ??
+    path: /swagger-ui.html # html ?? ?? ??
+    disable-swagger-default-url: true
+    display-request-duration: true # ?? ?? ??
+  paths-to-match:
+    - /api/v1/**
+  show-actuator: true

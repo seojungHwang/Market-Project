@@ -12,6 +12,5 @@ import java.time.LocalDateTime;
 public class CustomerDto {
 
     private String name;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+
 }

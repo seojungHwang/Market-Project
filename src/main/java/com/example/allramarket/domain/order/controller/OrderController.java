@@ -1,12 +1,12 @@
 package com.example.allramarket.domain.order.controller;
 
+import com.example.allramarket.domain.order.dto.OrderDto;
 import com.example.allramarket.domain.order.service.OrderService;
 import com.example.allramarket.global.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,12 +15,12 @@ public class OrderController {
 
     private final OrderService orderService;
 
-
     //주문내역
-    @GetMapping("/list")
-    public CommonResponse orderList() {
+    @GetMapping("/list/{id}")
+    public CommonResponse orderList(@PathVariable("id") Long id) {
+        List<OrderDto> orderDto = orderService.orderList(id);
 
-        return CommonResponse.success("");
+        return CommonResponse.success(orderDto);
     }
 
 

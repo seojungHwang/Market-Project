@@ -1,5 +1,6 @@
 package com.example.allramarket.domain.customer.service;
 
+import com.example.allramarket.domain.cart.service.CartService;
 import com.example.allramarket.domain.customer.dto.CustomerDto;
 import com.example.allramarket.domain.customer.entity.Customer;
 import com.example.allramarket.domain.customer.repository.CustomerRepository;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final CartService cartService;
 
     @Transactional
     public Customer register(CustomerDto customerDto){
@@ -23,7 +25,9 @@ public class CustomerService {
                 .updated_at(LocalDateTime.now())
                 .build();
 
-        Customer save = customerRepository.save(customer);
+        Customer save = customerRepository.saveAndFlush(customer);
+
+        cartService.cartCreate(save);
 
         return save;
     }

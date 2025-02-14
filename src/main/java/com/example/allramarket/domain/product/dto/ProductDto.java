@@ -29,4 +29,5 @@ public class ProductDto {
         this.created_at = product.getCreated_at();
         this.updated_at = product.getUpdated_at();
     }
+
 }

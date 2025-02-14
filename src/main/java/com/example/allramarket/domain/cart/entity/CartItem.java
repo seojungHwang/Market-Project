@@ -34,4 +34,5 @@ public class CartItem {
     public Long getTotalPrice() {
         return getProduct().getPrice() * getProduct().getPrice();
     }
+
 }
