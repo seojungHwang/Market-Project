@@ -34,8 +34,10 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @Column(nullable = false)
+    private Long amount;
+
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime created_at;
-
 }
