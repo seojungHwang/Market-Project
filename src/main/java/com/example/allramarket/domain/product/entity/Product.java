@@ -36,12 +36,11 @@ public class Product {
     private int stock;
 
     @CreationTimestamp
-  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @Column(nullable = false)
     private LocalDateTime created_at;
 
     @UpdateTimestamp
-  //  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     @Column(nullable = false)
     private LocalDateTime updated_at;
+
 }

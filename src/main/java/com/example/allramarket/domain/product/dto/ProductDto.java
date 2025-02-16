@@ -30,4 +30,33 @@ public class ProductDto {
         this.updated_at = product.getUpdated_at();
     }
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ProductAddDto {
+        private String name;
+        private String description;
+        private Long price;
+        private Integer stock;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ProductUpdateDto {
+        private long id;
+        private String name;
+        private String description;
+        private long price;
+        private int stock;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class ProductStockUpdateDto {
+        private Long id;
+        private int stock;
+    }
+
 }
