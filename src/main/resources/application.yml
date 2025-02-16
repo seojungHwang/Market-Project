@@ -25,12 +25,20 @@ springdoc:
   default-produces-media-type: application/json
   api-docs:
     path: /api-docs
+    enabled: true
   swagger-ui:
-    operations-sorter: method # alpha(??? ????), method(HTTP????)
-    tags-sorter: alpha # ?? ?? ??
-    path: /swagger-ui.html # html ?? ?? ??
+    operations-sorter: method
+    tags-sorter: alpha
+    path: /swagger-ui.html
     disable-swagger-default-url: true
-    display-request-duration: true # ?? ?? ??
+    display-request-duration: true
+    enabled: true
+    useNumbersForEnums: true
+    tryItOutEnabled: true
   paths-to-match:
     - /api/v1/**
   show-actuator: true
+  override-with-generic-response: true
+
+payment:
+    url: https://allra.free.beeceptor.com/api/v1/payment

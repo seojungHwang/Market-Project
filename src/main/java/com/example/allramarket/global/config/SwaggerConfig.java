@@ -2,6 +2,7 @@ package com.example.allramarket.global.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.models.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,8 @@ public class SwaggerConfig {
         return GroupedOpenApi.builder()
                 .group("allra-market API v1")
                 .pathsToMatch(paths)
+                .packagesToScan("com.example.allramarket")
+                .addOpenApiCustomizer(openApi -> openApi.schema("Long", new Schema().type("integer")))
                 .build();
     }
 

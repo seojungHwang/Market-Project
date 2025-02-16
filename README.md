@@ -1,23 +1,26 @@
-# Getting Started
+# 황서정
 
-### Reference Documentation
+### 사용기술
+* Java 17
+* SpringBoot 3.4.2
+* MariaDB 10.11.2
+* JPA
 
-For further reference, please consider the following sections:
+### 구현기능
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.2/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.4.2/gradle-plugin/packaging-oci-image.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/3.4.2/reference/data/sql.html#data.sql.jpa-and-spring-data)
+* 회원가입 시 장바구니가 생성된다.
+* 장바구니에 상품을 조회, 추가, 수정, 삭제를 할 수 있다.
+* 상품을 조회, 등록, 수정을 할 수 있다.
+* 장바구니에 담긴 상품을 주문 할 수 있다.
+* 상품 재고가 0 이거나, 장바구니에 담으려는 수량보다 재고가 적을 시 재고 에러 응답을 보낸다. 
+* 주문 시 주문한 상품의 수량만큼 상품의 재고가 차감된다.
+* 주문 시 결제가 요청된다. (모의 API URL : https://allra.free.beeceptor.com/api/v1/payment)
+* 주문이 완료되면 장바구니가 비워진다.
+* 주문한 내역을 조회 할 수 있다.
 
-### Guides
+* API 명세서(URL: http://localhost:8080/swagger-ui/index.html#)
 
-The following guides illustrate how to use some features concretely:
+### ERD
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-
-### Additional Links
-
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+![erd](../../Downloads/allra-market-erd.png)
 
