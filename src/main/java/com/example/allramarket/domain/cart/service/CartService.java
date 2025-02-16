@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static java.lang.Float.isNaN;
+import static java.util.stream.Collectors.toList;
+
 @Service
 @RequiredArgsConstructor
 public class CartService {
@@ -35,20 +38,25 @@ public class CartService {
                .customer(customer)
                .build();
 
-       Cart save = cartRepository.save(cart);
+       cartRepository.save(cart);
     }
 
     //장바구니 조회
     //customer id
-    public List<CartItemDto> cartList(Long id){
+    public CartItemDto.CartListDto cartList(Long id){
+        CartItemDto.CartListDto cartListDto = new CartItemDto.CartListDto();
         Cart cart = Optional.ofNullable(cartRepository.findByCustomer(id))
                 .orElseThrow(() -> new IllegalArgumentException("Cart not found for customer ID: " + id));
         List<CartItem> cartItem = Optional.ofNullable(cartItemRepository.findCartItemByCartAndId(cart.getId()))
                 .orElse(Collections.emptyList());
 
         List<CartItemDto> cartItemDto = cartItem.stream().map(CartItemDto::new).collect(Collectors.toList());
+        long totalPrice = (long) cartItemDto.stream().map(m -> m.getPrice()).collect(toList()).stream().mapToDouble(Long::longValue).sum();
 
-        return cartItemDto;
+        cartListDto.setCartItemList(cartItemDto);
+        cartListDto.setAmount(totalPrice);
+
+        return cartListDto;
     }
 
     //장바구니 추가
@@ -68,7 +76,6 @@ public class CartService {
 
         return save;
     }
-
 
     //장바구니 수정
     @Transactional
@@ -92,9 +99,22 @@ public class CartService {
     //장바구니 삭제
     //cart item id
     @Transactional
-    public void cartDelete(Long id){
-        Optional<CartItem> cartItem = cartItemRepository.findById(id);
-
+    public CartItemDto.CartListDto cartDelete(CartItemDto.CartItemDeleteDto cartItemDeleteDto){
+        Optional<CartItem> cartItem = cartItemRepository.findById(cartItemDeleteDto.getCartItemId());
         cartItemRepository.delete(cartItem.get());
+
+        CartItemDto.CartListDto cartList = cartList(cartItemDeleteDto.getCustomerId());
+        return cartList;
     }
+
+    @Transactional
+    public CartItemDto.CartListDto cartAllDelete(Long id){
+        Cart cart = cartRepository.findByCustomer(id);
+        List<CartItem> cartItem = cartItemRepository.findCartItemByCartAndId(cart.getId());
+        cartItemRepository.deleteAll(cartItem);
+        CartItemDto.CartListDto cartListDto = cartList(id);
+
+        return cartListDto;
+    }
+
 }

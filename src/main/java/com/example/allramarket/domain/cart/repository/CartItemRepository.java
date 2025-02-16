@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
-    @Query(value = "select i from CartItem i left join fetch i.cart c where i.id = :id ")
+    @Query(value = "select i from CartItem i left join fetch i.cart c where c.id = :id ")
     List<CartItem> findCartItemByCartAndId(@Param("id") Long id);
 
 }
