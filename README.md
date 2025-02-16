@@ -22,5 +22,5 @@
 
 ### ERD
 
-![erd](../../Downloads/allra-market-erd.png)
+![Image](https://github.com/user-attachments/assets/ff929644-bb51-461b-ab63-ee2c2f3db1da)
 
