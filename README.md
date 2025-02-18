@@ -19,6 +19,7 @@
 * 주문한 내역을 조회 할 수 있다.
 
 * API 명세서(URL: http://localhost:8080/swagger-ui/index.html#)
+* ![Image](https://github.com/user-attachments/assets/fee4e30f-4b5e-43ca-ba19-cf000b0e5eae)
 
 ### ERD
 
