@@ -5,6 +5,7 @@
 * SpringBoot 3.4.2
 * MariaDB 10.11.2
 * JPA
+* Docker
 
 ### 구현기능
 
